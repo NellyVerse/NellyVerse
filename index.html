@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voices from the Shelf — Where Readers and Indie Authors Actually Talk</title>
+<meta name="description" content="Voices from the Shelf connects book lovers with indie authors through real conversations — live author interviews, buddy reads, and honest recommendations.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230D0D0D'/><text x='50' y='75' font-family='Arial, Helvetica, sans-serif' font-weight='900' font-size='72' fill='%23CCFF00' text-anchor='middle'>V</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230D0D0D'/><text x='50' y='75' font-family='Arial, Helvetica, sans-serif' font-weight='900' font-size='72' fill='%23CCFF00' text-anchor='middle'>V</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0D0D0D;
+    --paper: #FFFFFF;
+    --acid: #CCFF00;
+    --hot: #FF1F6E;
+    --hot-deep: #CC1958;
+    --smoke: #F2F2F2;
+    --ash: #999999;
+
+    --t-hero: clamp(48px, 11.5vw, 138px);
+    --t-xl: clamp(34px, 6.5vw, 72px);
+    --t-lg: clamp(26px, 4vw, 48px);
+    --t-md: clamp(18px, 2.4vw, 24px);
+    --t-sm: clamp(14px, 1.3vw, 16px);
+    --t-xs: clamp(11px, 1vw, 12px);
+
+    --s-1: 4px;
+    --s-2: 8px;
+    --s-3: 16px;
+    --s-4: 24px;
+    --s-5: 40px;
+    --s-6: 64px;
+    --s-7: 96px;
+
+    --nav-h: 72px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-h);
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--t-sm);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    padding-bottom: 88px;
+  }
+
+  .js body { padding-bottom: 0; }
+
+  /* ---------- Scroll progress bar ---------- */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    z-index: 200;
+    pointer-events: none;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    width: 100%;
+    background: var(--acid);
+    transform: scaleX(0);
+    transform-origin: left center;
+    will-change: transform;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .mono {
+    font-family: 'Space Mono', monospace;
+  }
+
+  .label {
+    font-family: 'Space Mono', monospace;
+    font-size: var(--t-xs);
+    letter-spacing: 0.02em;
+  }
+
+  .label-lower { text-transform: lowercase; }
+  .label-upper { text-transform: uppercase; }
+
+  .wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding-left: var(--s-4);
+    padding-right: var(--s-4);
+  }
+
+  @media (min-width: 700px) {
+    .wrap { padding-left: var(--s-6); padding-right: var(--s-6); }
+  }
+
+  .hl {
+    background: var(--acid);
+    color: var(--ink);
+    padding: 0 0.15em;
+    line-height: 1.15;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .hl-hot {
+    background: var(--hot);
+    color: var(--paper);
+  }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    background: var(--ink);
+    border-bottom: 1px solid #2A2A2A;
+  }
+
+  .nav-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-4);
+  }
+
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(16px, 2.4vw, 20px);
+    color: var(--paper);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .nav-logo span { color: var(--acid); }
+
+  .nav-links {
+    display: none;
+    gap: var(--s-5);
+    align-items: center;
+  }
+
+  @media (min-width: 820px) {
+    .nav-links { display: flex; }
+  }
+
+  .nav-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: var(--t-xs);
+    text-transform: uppercase;
+    color: var(--paper);
+    letter-spacing: 0.03em;
+    position: relative;
+    padding: var(--s-1) 0;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -2px;
+    height: 2px;
+    background: var(--acid);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+  }
+
+  /* Visually hidden but keyboard/screen-reader accessible */
+  .nav-toggle-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #2A2A2A;
+    color: var(--paper);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 820px) {
+    .nav-toggle { display: none; }
+  }
+
+  .nav-toggle svg { width: 18px; height: 18px; }
+
+  .nav-toggle-icon-close { display: none; }
+
+  .nav-toggle-checkbox:checked ~ .nav-inner .nav-toggle-icon-open { display: none; }
+  .nav-toggle-checkbox:checked ~ .nav-inner .nav-toggle-icon-close { display: block; }
+
+  .nav-toggle-checkbox:focus-visible ~ .nav-inner .nav-toggle {
+    outline: 2px solid var(--acid);
+    outline-offset: 2px;
+  }
+
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    background: var(--ink);
+    flex-direction: column;
+    gap: var(--s-4);
+    padding: var(--s-6) var(--s-4);
+    overflow-y: auto;
+  }
+
+  @media (min-width: 820px) {
+    .mobile-nav { display: none !important; }
+  }
+
+  .nav-toggle-checkbox:checked ~ .mobile-nav {
+    display: flex;
+  }
+
+  .mobile-nav a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(28px, 8vw, 40px);
+    letter-spacing: -0.01em;
+    color: var(--paper);
+    border-bottom: 1px solid #2A2A2A;
+    padding-bottom: var(--s-3);
+  }
+
+  .mobile-nav a:hover,
+  .mobile-nav a:active {
+    color: var(--acid);
+  }
+
+  .btn {
+    position: relative;
+    font-family: 'Space Mono', monospace;
+    font-size: var(--t-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 12px 20px;
+    border: 1px solid var(--paper);
+    background: transparent;
+    color: var(--paper);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+
+  .btn .sparkle {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 14px;
+    height: 14px;
+    fill: var(--ink);
+    opacity: 0;
+    transform: scale(0.4) rotate(-15deg);
+    transition: opacity 0.25s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+  }
+
+  .btn:hover .sparkle {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+
+  .btn-pulse {
+    animation: btn-pulse 3.2s ease-in-out infinite;
+    overflow: hidden;
+  }
+
+  .btn-pulse::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent, rgba(13, 13, 13, 0.35), transparent);
+    transform: skewX(-20deg) translateX(-20%);
+    animation: btn-shine 3.2s ease-in-out infinite;
+  }
+
+  .btn-pulse:hover,
+  .btn-pulse:hover::before {
+    animation-play-state: paused;
+  }
+
+  @keyframes btn-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.045); }
+  }
+
+  @keyframes btn-shine {
+    0% { transform: skewX(-20deg) translateX(-20%); opacity: 0; }
+    8% { opacity: 1; }
+    24% { transform: skewX(-20deg) translateX(320%); opacity: 0; }
+    100% { transform: skewX(-20deg) translateX(320%); opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-pulse, .btn-pulse::before { animation: none; }
+  }
+
+  .btn:hover {
+    background: var(--acid);
+    color: var(--ink);
+    border-color: var(--acid);
+    transform: translateY(-2px);
+  }
+
+  .btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  .btn-solid {
+    background: var(--acid);
+    color: var(--ink);
+    border-color: var(--acid);
+  }
+
+  .btn-solid:hover {
+    background: var(--paper);
+    color: var(--ink);
+    border-color: var(--paper);
+  }
+
+  .btn-ink {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+
+  .btn-ink:hover {
+    background: var(--ink);
+    color: var(--acid);
+    border-color: var(--ink);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding-top: var(--s-6);
+    padding-bottom: var(--s-6);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+  }
+
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: blob-drift-1 22s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .hero-blob-1 {
+    width: 480px;
+    height: 480px;
+    top: -140px;
+    left: -120px;
+    background: radial-gradient(circle, rgba(204, 255, 0, 0.16), transparent 70%);
+  }
+
+  .hero-blob-2 {
+    width: 420px;
+    height: 420px;
+    right: -100px;
+    bottom: -160px;
+    background: radial-gradient(circle, rgba(255, 31, 110, 0.14), transparent 70%);
+    animation-name: blob-drift-2;
+    animation-duration: 26s;
+  }
+
+  @keyframes blob-drift-1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(40px, 30px); }
+  }
+
+  @keyframes blob-drift-2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-30px, -40px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-blob { animation: none; }
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+    align-items: center;
+  }
+
+  @media (min-width: 960px) {
+    .hero-layout { grid-template-columns: 0.95fr 1.2fr; gap: var(--s-4); }
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-media {
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (min-width: 960px) {
+    .hero-media { margin-left: -40px; }
+  }
+
+  @media (min-width: 1200px) {
+    .hero-media { margin-left: -70px; }
+  }
+
+  .hero-media-frame {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border: none;
+    background: linear-gradient(155deg, #1a2400 0%, var(--ink) 55%, #0d0d0d 100%);
+  }
+
+  .hero-media-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(90deg, var(--ink) 0%, rgba(13, 13, 13, 0.75) 12%, rgba(13, 13, 13, 0.35) 28%, rgba(13, 13, 13, 0.06) 45%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-photo {
+    position: absolute;
+    inset: -4%;
+    width: 108%;
+    height: 108%;
+    object-fit: cover;
+    will-change: transform;
+  }
+
+  .hero-card {
+    position: absolute;
+    right: -5%;
+    bottom: -32px;
+    max-width: 220px;
+    background: var(--ink);
+    border: 1px solid var(--acid);
+    padding: var(--s-3) var(--s-4);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    animation: card-breathe 5s ease-in-out infinite;
+    z-index: 2;
+  }
+
+  .hero-card strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: var(--t-md);
+    line-height: 1;
+    color: var(--paper);
+  }
+
+  .hero-card-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--ash);
+  }
+
+  @keyframes card-breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-card { animation: none; }
+  }
+
+  @media (max-width: 599px) {
+    .hero-card { left: 4%; right: auto; bottom: -20px; max-width: 180px; }
+  }
+
+  .hero-label {
+    color: var(--acid);
+    margin-bottom: var(--s-4);
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: var(--t-hero);
+    color: var(--paper);
+    max-width: 15ch;
+    font-weight: 900;
+    line-height: 0.86;
+    letter-spacing: -0.03em;
+  }
+
+  /* ---------- Swash (hand-drawn underline, one-shot on load) ---------- */
+  .swash-wrap {
+    position: relative;
+    display: inline-block;
+  }
+
+  .swash {
+    position: absolute;
+    left: -2%;
+    bottom: -0.08em;
+    width: 104%;
+    height: 0.32em;
+    transform: scaleX(0);
+    transform-origin: left center;
+    opacity: 0;
+    animation: swash-in 0.65s 0.55s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    pointer-events: none;
+  }
+
+  .swash path {
+    fill: none;
+    stroke: var(--acid);
+    stroke-width: 7;
+    stroke-linecap: round;
+  }
+
+  @keyframes swash-in {
+    0% { transform: scaleX(0); opacity: 0; }
+    55% { opacity: 1; }
+    100% { transform: scaleX(1); opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .swash {
+      animation: none;
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+
+  .hero-sub {
+    margin-top: var(--s-5);
+    max-width: 46ch;
+    font-size: var(--t-md);
+    color: #D9D9D9;
+    line-height: 1.55;
+  }
+
+  .hero-cta {
+    margin-top: var(--s-6);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+  }
+
+  .hero-meta {
+    margin-top: var(--s-6);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-4) var(--s-6);
+    border-top: 1px solid #2A2A2A;
+    padding-top: var(--s-4);
+  }
+
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ash);
+    text-transform: uppercase;
+  }
+
+  .hero-meta-item svg { width: 14px; height: 14px; color: var(--acid); flex-shrink: 0; }
+
+  /* ---------- Newsletter band ---------- */
+  .newsletter {
+    background: var(--smoke);
+    padding-top: var(--s-6);
+    padding-bottom: var(--s-6);
+  }
+
+  .newsletter-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-5);
+  }
+
+  .newsletter-copy { max-width: 640px; }
+
+  .newsletter-copy h2 {
+    font-size: var(--t-xl);
+    color: var(--ink);
+    margin-top: var(--s-2);
+  }
+
+  .newsletter-copy p {
+    margin-top: var(--s-3);
+    color: #4A4A4A;
+    max-width: 52ch;
+  }
+
+  /* ---------- Section shell ---------- */
+  section { padding-top: var(--s-7); padding-bottom: var(--s-7); }
+
+  .sec-head {
+    margin-bottom: var(--s-6);
+    max-width: 60ch;
+  }
+
+  .sec-label {
+    color: var(--hot-deep);
+    display: block;
+    margin-bottom: var(--s-3);
+  }
+
+  .sec-head h2 { font-size: var(--t-xl); }
+
+  /* ---------- Work grid ---------- */
+  .work { background: var(--paper); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-4);
+  }
+
+  @media (min-width: 820px) {
+    .grid { grid-template-columns: repeat(3, 1fr); gap: var(--s-4); }
+  }
+
+  .card {
+    min-width: 0;
+    border: 1px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    will-change: transform;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+
+  .card-media {
+    aspect-ratio: 1 / 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--ink);
+    background-image:
+      repeating-linear-gradient(135deg, rgba(0,0,0,0.06) 0 2px, transparent 2px 18px);
+  }
+
+  .card-1 .card-media { background-color: var(--acid); }
+  .card-2 .card-media { background-color: var(--smoke); }
+  .card-3 .card-media { background-color: var(--hot); }
+
+  .card-media svg {
+    width: 25%;
+    height: 25%;
+    color: var(--ink);
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-3 .card-media svg { color: var(--paper); }
+
+  .card-body {
+    padding: var(--s-4);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+  }
+
+  .card-body .label { color: var(--hot-deep); }
+
+  .card-body h3 { font-size: var(--t-lg); margin-top: var(--s-1); }
+
+  .card-body p { color: #4A4A4A; margin-top: var(--s-2); }
+
+  .card-tag {
+    margin-top: auto;
+    padding-top: var(--s-3);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    padding: 4px 8px;
+    color: var(--ink);
+  }
+
+  /* ---------- How it works ---------- */
+  .how { background: var(--smoke); }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+  }
+
+  @media (min-width: 820px) {
+    .how-grid { grid-template-columns: repeat(3, 1fr); gap: var(--s-5); }
+  }
+
+  .how-icon-wrap {
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--s-4);
+  }
+
+  .how-icon {
+    width: 26px;
+    height: 26px;
+    color: var(--ink);
+    animation: icon-bob 3s ease-in-out infinite;
+    animation-delay: var(--bob-delay, 0s);
+  }
+
+  @keyframes icon-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .how-icon { animation: none; }
+  }
+
+  .how-num {
+    color: var(--hot-deep);
+    display: block;
+    margin-bottom: var(--s-2);
+  }
+
+  .how-step h3 { font-size: var(--t-lg); margin-bottom: var(--s-2); }
+
+  .how-step p { color: #4A4A4A; max-width: 32ch; }
+
+  .how-step-link {
+    display: inline-block;
+    margin-top: var(--s-3);
+    font-family: 'Space Mono', monospace;
+    font-size: var(--t-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--hot-deep);
+    border-bottom: 1px solid var(--hot-deep);
+    padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .how-step-link:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* ---------- About ---------- */
+  .about {
+    background: var(--ink);
+    color: var(--paper);
+    padding-top: var(--s-6);
+    padding-bottom: var(--s-6);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-6);
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    .about-grid { grid-template-columns: 1.1fr 0.9fr; }
+  }
+
+  .about h2 { font-size: var(--t-xl); color: var(--paper); max-width: 14ch; }
+
+  .about-copy { margin-top: var(--s-5); }
+
+  .about-copy p { color: #C9C9C9; max-width: 52ch; }
+
+  .about-copy p + p { margin-top: var(--s-3); }
+
+  .about-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+
+  .about-list li {
+    display: flex;
+    gap: var(--s-3);
+    align-items: baseline;
+    border-top: 1px solid #2A2A2A;
+    padding-top: var(--s-3);
+  }
+
+  .about-list li:first-child { border-top: none; padding-top: 0; }
+
+  .about-list .check {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .about-list .check-path {
+    fill: none;
+    stroke: var(--acid);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 28;
+    stroke-dashoffset: 0;
+  }
+
+  .js .reveal .check-path {
+    stroke-dashoffset: 28;
+    transition: stroke-dashoffset 0.5s ease 0.15s;
+  }
+
+  .js .reveal.is-visible .check-path {
+    stroke-dashoffset: 0;
+  }
+
+  .about-list strong {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+    font-size: var(--t-sm);
+    color: var(--paper);
+  }
+
+  .about-list span.desc {
+    display: block;
+    color: var(--ash);
+    font-size: var(--t-xs);
+    margin-top: 4px;
+    font-family: 'DM Sans', sans-serif;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq { background: var(--paper); }
+
+  .faq-list { display: flex; flex-direction: column; }
+
+  .faq-item {
+    border-top: 1px solid #DADADA;
+    padding-top: var(--s-4);
+    padding-bottom: var(--s-4);
+  }
+
+  .faq-list .faq-item:last-child { border-bottom: 1px solid #DADADA; }
+
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-3);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: var(--t-md);
+    letter-spacing: -0.01em;
+  }
+
+  .faq-item summary::-webkit-details-marker { display: none; }
+
+  .faq-item summary::after {
+    content: '+';
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+    color: var(--hot-deep);
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+
+  .faq-item p {
+    margin-top: var(--s-3);
+    color: #4A4A4A;
+    max-width: 60ch;
+  }
+
+  /* ---------- Contact ---------- */
+  .contact {
+    background: var(--acid);
+    color: var(--ink);
+  }
+
+  .contact-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-5);
+  }
+
+  .contact h2 {
+    font-size: clamp(40px, 9vw, 104px);
+    max-width: 16ch;
+  }
+
+  .contact-sub {
+    font-size: var(--t-md);
+    max-width: 44ch;
+    color: #1A1A1A;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-3);
+    align-items: center;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--ink);
+    color: var(--ash);
+    padding-top: var(--s-5);
+    padding-bottom: var(--s-5);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--s-3);
+    font-family: 'Space Mono', monospace;
+    font-size: var(--t-xs);
+    text-transform: uppercase;
+  }
+
+  .footer-inner a:hover { color: var(--acid); }
+
+  /* ---------- Sticky book bar ---------- */
+  .book-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 150;
+    background: var(--ink);
+    border-top: 1px solid #2A2A2A;
+  }
+
+  .book-bar-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-3);
+    padding-top: var(--s-3);
+    padding-bottom: var(--s-3);
+  }
+
+  .book-bar-text {
+    color: var(--paper);
+    font-size: var(--t-sm);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-2);
+  }
+
+  .book-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--s-3);
+  }
+
+  .book-bar-close {
+    background: transparent;
+    border: 1px solid #2A2A2A;
+    color: var(--ash);
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .book-bar-close:hover { color: var(--paper); border-color: var(--paper); }
+
+  .book-bar-close svg { width: 14px; height: 14px; }
+
+  .js .book-bar {
+    transform: translateY(110%);
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .js .book-bar.is-visible { transform: translateY(0); }
+
+  .js .book-bar.is-dismissed { display: none; }
+
+  /* ---------- Slide-in nudge ---------- */
+  .nudge {
+    position: fixed;
+    right: var(--s-4);
+    bottom: 96px;
+    z-index: 160;
+    width: min(300px, calc(100vw - 2 * var(--s-4)));
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+    padding: var(--s-4);
+    display: none;
+  }
+
+  .js .nudge {
+    display: block;
+    transform: translateX(120%);
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .js .nudge.is-visible {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .js .nudge.is-dismissed { display: none; }
+
+  .nudge-close {
+    position: absolute;
+    top: var(--s-2);
+    right: var(--s-2);
+    background: transparent;
+    border: none;
+    color: var(--ash);
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nudge-close:hover { color: var(--ink); }
+
+  .nudge-close svg { width: 14px; height: 14px; }
+
+  .nudge-copy {
+    margin-top: var(--s-2);
+    margin-bottom: var(--s-3);
+    color: #333;
+    font-size: var(--t-sm);
+    max-width: 28ch;
+  }
+
+  @media (max-width: 480px) {
+    .nudge { right: var(--s-3); left: var(--s-3); width: auto; bottom: 92px; }
+  }
+
+  /* ---------- JotForm popup modal ---------- */
+  .jf-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: var(--s-4);
+    background: rgba(13, 13, 13, 0.85);
+  }
+
+  .jf-modal.is-open { display: flex; }
+
+  .jf-modal-panel {
+    position: relative;
+    width: min(760px, 100%);
+    height: min(85vh, 820px);
+    background: var(--paper);
+    border: 1px solid var(--ink);
+  }
+
+  .jf-modal-panel.is-compact {
+    width: min(580px, 100%);
+    height: min(60vh, 460px);
+  }
+
+  .jf-modal-panel iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .jf-modal-fallback {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: var(--paper);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--s-3);
+    padding: var(--s-5);
+  }
+
+  .jf-modal-fallback.is-active { display: flex; }
+
+  .jf-modal-fallback p {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    font-size: var(--t-md);
+    max-width: 32ch;
+  }
+
+  .jf-modal-close {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--acid);
+    border: 1px solid var(--acid);
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .jf-modal-close:hover {
+    background: var(--ink);
+    color: var(--acid);
+    border-color: var(--paper);
+  }
+
+  .jf-modal-close svg { width: 16px; height: 16px; }
+
+  body.jf-modal-open { overflow: hidden; }
+
+  @media (max-width: 599px) {
+    .jf-modal-panel { height: min(90vh, 820px); }
+    .jf-modal-panel.is-compact { height: min(70vh, 480px); }
+    .jf-modal-close { top: -42px; }
+  }
+
+  /* ---------- Reveal (JS-enhanced, safe without JS) ---------- */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" aria-hidden="true"><div class="progress-bar-fill" id="progressFill"></div></div>
+
+<nav class="nav">
+  <input type="checkbox" id="navToggle" class="nav-toggle-checkbox">
+  <div class="wrap nav-inner">
+    <a href="#top" class="nav-logo">Voices<span>_</span> Shelf</a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#how">How it works</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-solid btn-pulse">
+        Get in touch
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L13.8 9.2 L21 11 L13.8 12.8 L12 20 L10.2 12.8 L3 11 L10.2 9.2 Z"/></svg>
+      </a>
+      <label for="navToggle" class="nav-toggle" aria-label="Open menu">
+        <svg class="nav-toggle-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="nav-toggle-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </label>
+    </div>
+  </div>
+  <div class="mobile-nav">
+    <a href="#work">Work</a>
+    <a href="#how">How it works</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header id="top" class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+  <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <span class="label label-lower hero-label">// book lovers + indie authors</span>
+        <h1>Where readers and <span class="hl">indie authors</span> <span class="swash-wrap">actually
+            <svg class="swash" viewBox="0 0 220 24" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M4 16 C 24 4, 40 24, 60 13 C 78 3, 96 22, 116 12 C 134 3, 152 21, 172 11 C 186 4, 198 16, 216 9"/>
+            </svg>
+          </span> talk<span style="color:var(--acid);">.</span></h1>
+        <p class="hero-sub">Great stories deserve more than a spot on the shelf. Voices from the Shelf connects readers with indie authors worth discovering through live conversations, buddy reads, and honest recommendations from people who genuinely love talking about books.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-solid">
+            Get in touch
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L13.8 9.2 L21 11 L13.8 12.8 L12 20 L10.2 12.8 L3 11 L10.2 9.2 Z"/></svg>
+          </a>
+          <a href="#work" class="btn">
+            See the work
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="hero-media-frame">
+          <img class="hero-photo" id="heroPhoto" src="images/hero-mic-shelf.jpg" alt="Illustrated microphone in front of a bookshelf, in Voices from the Shelf's black and acid-green brand colors" loading="eager" onerror="this.style.display='none'">
+        </div>
+        <div class="hero-card">
+          <span class="label label-lower" style="color:var(--acid);">// next up</span>
+          <strong>Live author interviews</strong>
+          <span class="hero-card-sub">New slots open weekly</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item mono label-upper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></svg>
+        TikTok Live
+      </div>
+      <div class="hero-meta-item mono label-upper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/></svg>
+        Author interviews
+      </div>
+      <div class="hero-meta-item mono label-upper">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Buddy reads
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="newsletter" aria-label="Newsletter signup">
+  <div class="wrap newsletter-inner">
+    <div class="newsletter-copy">
+      <span class="label label-lower" style="color:var(--hot-deep);">// join the list</span>
+      <h2>Get the good stuff in your inbox<span style="color:var(--acid);">.</span></h2>
+      <p>New author interviews, buddy read picks, and recommendations you won't find on an algorithm. No spam, unsubscribe anytime.</p>
+    </div>
+    <button type="button" class="btn btn-solid" id="newsletterBtn" data-jf-src="262239113953053" data-jf-compact="true">
+      Sign up free
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L13.8 9.2 L21 11 L13.8 12.8 L12 20 L10.2 12.8 L3 11 L10.2 9.2 Z"/></svg>
+    </button>
+  </div>
+</section>
+
+<section id="work" class="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label label-lower sec-label">// what we do</span>
+      <h2>[The Work]</h2>
+    </div>
+    <div class="grid">
+
+      <article class="card card-1 reveal">
+        <div class="card-media">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9v6l5-3-5-3Z" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div class="card-body">
+          <span class="label label-lower">// author interviews [LIVE SHOWS]</span>
+          <h3>Real conversations, not book ads</h3>
+          <p>Unscripted TikTok Live interviews where indie authors talk about the book behind the book — the process, the doubts, the reason it exists. No pitch decks.</p>
+          <div class="card-tag">
+            <span class="tag">Live</span>
+            <span class="tag">Unscripted</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card card-2 reveal">
+        <div class="card-media">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/><path d="M9 7h6M9 11h4"/></svg>
+        </div>
+        <div class="card-body">
+          <span class="label label-lower">// buddy reads [COMMUNITY]</span>
+          <h3>Read together, talk after</h3>
+          <p>A shared reading schedule, a running Discord thread, and a live wrap-up discussion. Readers finish books with people, not alone in a group chat that goes quiet.</p>
+          <div class="card-tag">
+            <span class="tag">Discord</span>
+            <span class="tag">Group reads</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card card-3 reveal">
+        <div class="card-media">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="0"/><path d="M3 8h18M8 4v4"/><path d="M7 13l2.5 2.5L14 11"/></svg>
+        </div>
+        <div class="card-body">
+          <span class="label label-lower">// booktok content [SHORT-FORM]</span>
+          <h3>Recommendations you can trust</h3>
+          <p>Honest, genre-spanning recs and reactions — the kind that tell you how a book actually feels to read, not just that it's "the best book of the year."</p>
+          <div class="card-tag">
+            <span class="tag">All genres</span>
+            <span class="tag">Weekly</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="how" class="how">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label label-lower sec-label">// how it works</span>
+      <h2>[Booking A Slot]</h2>
+    </div>
+    <div class="how-grid">
+
+      <div class="how-step reveal">
+        <div class="how-icon-wrap">
+          <svg class="how-icon" style="--bob-delay:0s" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2Z"/></svg>
+        </div>
+        <span class="label label-upper how-num">01</span>
+        <h3>Submit your book</h3>
+        <p>Tell us about it — genre, vibe, why readers should care. Takes about five minutes.</p>
+        <a href="#contact" class="how-step-link" id="howSubmitBtn" data-jf-src="262238410158049">Submit your book →</a>
+      </div>
+
+      <div class="how-step reveal">
+        <div class="how-icon-wrap">
+          <svg class="how-icon" style="--bob-delay:0.5s" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+        </div>
+        <span class="label label-upper how-num">02</span>
+        <h3>Get scheduled</h3>
+        <p>We book a live slot that works for you. Slots are limited each week, so it pays to move early.</p>
+      </div>
+
+      <div class="how-step reveal">
+        <div class="how-icon-wrap">
+          <svg class="how-icon" style="--bob-delay:1s" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <span class="label label-upper how-num">03</span>
+        <h3>Go live &amp; connect</h3>
+        <p>Real conversation, real readers, no script. Just you and the book you wrote.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="label label-lower sec-label" style="color:var(--acid);">// about</span>
+      <h2>Finding the voices hidden on the shelf<span style="color:var(--hot);">!</span></h2>
+      <div class="about-copy">
+        <p>Great books are published every day, but not every story gets the chance to find its audience. Somewhere on the shelf is an author you've never heard of, a story you didn't know you needed, and maybe your next favorite book.</p>
+        <p>Voices from the Shelf exists to find those voices and bring them into the conversation. We connect readers with indie authors through live conversations, buddy reads, honest recommendations, and a community built around discovering what might otherwise stay hidden.</p>
+      </div>
+    </div>
+    <ul class="about-list reveal">
+      <li>
+        <svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path class="check-path" d="M4 13 L9.5 18.5 L20 6"/></svg>
+        <div>
+          <strong>Voices worth hearing</strong>
+          <span class="desc">Meet indie authors and discover the stories behind their stories.</span>
+        </div>
+      </li>
+      <li>
+        <svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path class="check-path" d="M4 13 L9.5 18.5 L20 6"/></svg>
+        <div>
+          <strong>Stories worth finding</strong>
+          <span class="desc">Books you might never see on the usual bestseller lists or endless feeds.</span>
+        </div>
+      </li>
+      <li>
+        <svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path class="check-path" d="M4 13 L9.5 18.5 L20 6"/></svg>
+        <div>
+          <strong>Conversations worth having</strong>
+          <span class="desc">Live interviews, buddy reads, book clubs, and discussions that go beyond "buy my book."</span>
+        </div>
+      </li>
+      <li>
+        <svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path class="check-path" d="M4 13 L9.5 18.5 L20 6"/></svg>
+        <div>
+          <strong>A shelf for everyone</strong>
+          <span class="desc">Different genres, different voices, and authors at every stage of the journey.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label label-lower sec-label">// questions</span>
+      <h2>[FAQ]</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item">
+        <summary>Is submitting my book free?</summary>
+        <p>Yes. Sending your book over for consideration costs nothing — no submission fee, no catch.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does my book have to fit a specific genre?</summary>
+        <p>No. Voices from the Shelf covers every genre, and authors at any stage — debut or tenth book.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What does the interview actually look like?</summary>
+        <p>A live, unscripted conversation on TikTok Live — about the book, the process, and the story behind it. No pitch deck, no script.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How long until I hear back?</summary>
+        <p>Around a week on average. Interview slots are limited each week, so the sooner you submit, the sooner you're on the calendar.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap contact-inner">
+    <span class="label label-lower">// partner with us</span>
+    <h2>Readers are really good at ignoring ads. We are too<span style="color:var(--hot);">.</span></h2>
+    <p class="contact-sub">That's why we'd rather create something people actually want to watch, read, or talk about. If you're a publisher, brand, or company with an idea, let's make it interesting.</p>
+    <div class="contact-row">
+      <a href="mailto:collabs@voicesfromtheshelf.com" class="btn btn-ink">
+        collabs@voicesfromtheshelf.com
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>Voices from the Shelf_</span>
+    <span>&copy; 2026 — Built for readers and indie authors</span>
+    <a href="https://www.tiktok.com/@jonahfromtheshelf" target="_blank" rel="noopener">TikTok ↗</a>
+  </div>
+</footer>
+
+<div class="book-bar" id="bookBar">
+  <div class="wrap book-bar-inner">
+    <span class="book-bar-text">
+      <span class="label label-lower" style="color:var(--acid);">// heads up —</span>
+      interview slots are limited each week and fill up fast.
+    </span>
+    <div class="book-bar-actions">
+      <a href="#contact" class="btn btn-solid" id="bookSlotBtn" data-jf-src="262238410158049">
+        Book your slot
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L13.8 9.2 L21 11 L13.8 12.8 L12 20 L10.2 12.8 L3 11 L10.2 9.2 Z"/></svg>
+      </a>
+      <button type="button" class="book-bar-close" id="bookBarClose" aria-label="Dismiss">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="nudge" id="nudge">
+  <button type="button" class="nudge-close" id="nudgeClose" aria-label="Dismiss">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <span class="label label-lower" style="color:var(--acid);">// still deciding?</span>
+  <p class="nudge-copy">Interview slots fill up fast. Send your book over — it only takes five minutes.</p>
+  <a href="#contact" class="btn btn-ink" id="nudgeSlotBtn" data-jf-src="262238410158049">
+    Book your slot
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</div>
+
+<div class="jf-modal" id="jfModal" role="dialog" aria-modal="true" aria-label="Submit your book">
+  <div class="jf-modal-panel">
+    <button type="button" class="jf-modal-close" id="jfModalClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <iframe id="jfModalFrame" data-src="https://form.jotform.com/262238410158049" title="Submit your book — Voices from the Shelf"></iframe>
+    <div class="jf-modal-fallback" id="jfModalFallback">
+      <p>This form is taking a moment to load. You can reach us directly instead:</p>
+      <a href="#contact" class="btn btn-ink" id="jfModalFallbackLink">
+        Contact us
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.documentElement.classList.add('js');
+
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Reveal on scroll ---------- */
+  if ('IntersectionObserver' in window && !reducedMotion) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      io.observe(el);
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }
+
+  /* ---------- Scroll progress bar, hero parallax, sticky book bar ---------- */
+  var progressFill = document.getElementById('progressFill');
+  var heroPhoto = document.getElementById('heroPhoto');
+  var heroEl = document.querySelector('.hero');
+  var bookBar = document.getElementById('bookBar');
+  var ticking = false;
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      var scrollY = window.scrollY || window.pageYOffset;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = docHeight > 0 ? Math.min(Math.max(scrollY / docHeight, 0), 1) : 0;
+
+      if (progressFill) {
+        progressFill.style.transform = 'scaleX(' + pct + ')';
+      }
+
+      if (heroPhoto && !reducedMotion) {
+        var y = Math.min(scrollY * 0.08, 22);
+        heroPhoto.style.transform = 'translateY(' + y + 'px)';
+      }
+
+      if (bookBar && heroEl && !bookBar.classList.contains('is-dismissed')) {
+        var heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
+        if (scrollY > heroBottom) {
+          bookBar.classList.add('is-visible');
+        } else {
+          bookBar.classList.remove('is-visible');
+        }
+      }
+
+      ticking = false;
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var bookBarClose = document.getElementById('bookBarClose');
+  if (bookBarClose && bookBar) {
+    bookBarClose.addEventListener('click', function () {
+      bookBar.classList.remove('is-visible');
+      bookBar.classList.add('is-dismissed');
+    });
+  }
+
+  /* ---------- One-time slide-in nudge ---------- */
+  var nudge = document.getElementById('nudge');
+  var nudgeClose = document.getElementById('nudgeClose');
+  var nudgeDismissed = false;
+  try {
+    nudgeDismissed = sessionStorage.getItem('vfts-nudge-dismissed') === '1';
+  } catch (e) {}
+
+  if (nudge && nudgeDismissed) {
+    nudge.classList.add('is-dismissed');
+  } else if (nudge && 'IntersectionObserver' in window) {
+    var nudgeTrigger = document.getElementById('how');
+    if (nudgeTrigger) {
+      var nudgeIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var bookBarShowing = bookBar && bookBar.classList.contains('is-visible');
+            if (!bookBarShowing) {
+              nudge.classList.add('is-visible');
+            }
+            nudgeIO.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      nudgeIO.observe(nudgeTrigger);
+    }
+  }
+
+  if (nudgeClose && nudge) {
+    nudgeClose.addEventListener('click', function () {
+      nudge.classList.remove('is-visible');
+      nudge.classList.add('is-dismissed');
+      try {
+        sessionStorage.setItem('vfts-nudge-dismissed', '1');
+      } catch (e) {}
+    });
+  }
+
+  /* ---------- JotForm popup modal ---------- */
+  var jfModal = document.getElementById('jfModal');
+  var jfModalPanel = document.querySelector('.jf-modal-panel');
+  var jfModalFrame = document.getElementById('jfModalFrame');
+  var jfModalClose = document.getElementById('jfModalClose');
+  var jfModalFallback = document.getElementById('jfModalFallback');
+  var jfModalFallbackLink = document.getElementById('jfModalFallbackLink');
+  var jfLastFocused = null;
+  var jfLoadTimer = null;
+
+  function showJfFallback() {
+    if (jfModalFallback) jfModalFallback.classList.add('is-active');
+  }
+
+  function hideJfFallback() {
+    if (jfModalFallback) jfModalFallback.classList.remove('is-active');
+  }
+
+  function armJfLoadWatch() {
+    if (jfLoadTimer) clearTimeout(jfLoadTimer);
+    hideJfFallback();
+    jfLoadTimer = setTimeout(showJfFallback, 8000);
+  }
+
+  if (jfModalFrame) {
+    jfModalFrame.addEventListener('load', function () {
+      if (jfLoadTimer) clearTimeout(jfLoadTimer);
+      hideJfFallback();
+    });
+    jfModalFrame.addEventListener('error', function () {
+      if (jfLoadTimer) clearTimeout(jfLoadTimer);
+      showJfFallback();
+    });
+  }
+
+  if (jfModalFallbackLink) {
+    jfModalFallbackLink.addEventListener('click', closeJfModal);
+  }
+
+  function openJfModal(e) {
+    if (e) e.preventDefault();
+    if (!jfModal) return;
+    var trigger = e && e.currentTarget;
+    var formId = trigger ? trigger.getAttribute('data-jf-src') : null;
+    var isNewsletter = trigger && trigger.id === 'newsletterBtn';
+    var frameTitle = isNewsletter ? 'Newsletter signup — Voices from the Shelf' : 'Submit your book — Voices from the Shelf';
+    if (jfModalFrame && formId) {
+      var target = 'https://form.jotform.com/' + formId;
+      if (jfModalFrame.getAttribute('data-current') !== formId) {
+        jfModalFrame.src = target;
+        jfModalFrame.setAttribute('data-current', formId);
+        jfModalFrame.setAttribute('title', frameTitle);
+        armJfLoadWatch();
+      }
+    } else if (jfModalFrame && !jfModalFrame.src) {
+      jfModalFrame.src = jfModalFrame.getAttribute('data-src');
+      armJfLoadWatch();
+    }
+    if (jfModalPanel) {
+      jfModalPanel.classList.toggle('is-compact', !!(trigger && trigger.getAttribute('data-jf-compact') === 'true'));
+    }
+    if (jfModal) {
+      jfModal.setAttribute('aria-label', isNewsletter ? 'Newsletter signup' : 'Submit your book');
+    }
+    jfLastFocused = document.activeElement;
+    jfModal.classList.add('is-open');
+    document.body.classList.add('jf-modal-open');
+    if (jfModalClose) jfModalClose.focus();
+  }
+
+  function closeJfModal() {
+    if (!jfModal) return;
+    jfModal.classList.remove('is-open');
+    document.body.classList.remove('jf-modal-open');
+    if (jfLastFocused && jfLastFocused.focus) jfLastFocused.focus();
+  }
+
+  ['bookSlotBtn', 'nudgeSlotBtn', 'howSubmitBtn', 'newsletterBtn'].forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('click', openJfModal);
+  });
+
+  if (jfModalClose) jfModalClose.addEventListener('click', closeJfModal);
+
+  if (jfModal) {
+    jfModal.addEventListener('click', function (e) {
+      if (e.target === jfModal) closeJfModal();
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && jfModal && jfModal.classList.contains('is-open')) {
+      closeJfModal();
+    }
+  });
+
+  /* ---------- Mobile nav (progressive enhancement on top of CSS-only toggle) ---------- */
+  var navToggle = document.getElementById('navToggle');
+  if (navToggle) {
+    document.querySelectorAll('.mobile-nav a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navToggle.checked = false;
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && navToggle.checked) {
+        navToggle.checked = false;
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
