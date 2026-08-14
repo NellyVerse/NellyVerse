@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Voices from the Shelf</title>
+<meta name="description" content="How Voices from the Shelf collects, uses, and protects your information.">
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230D0D0D'/><text x='50' y='75' font-family='Arial, Helvetica, sans-serif' font-weight='900' font-size='72' fill='%23CCFF00' text-anchor='middle'>V</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0D0D0D;
+    --paper: #FFFFFF;
+    --acid: #CCFF00;
+    --hot: #FF1F6E;
+    --hot-deep: #CC1958;
+    --smoke: #F2F2F2;
+    --ash: #999999;
+
+    --t-xl: clamp(34px, 6.5vw, 72px);
+    --t-lg: clamp(26px, 4vw, 48px);
+    --t-md: clamp(18px, 2.4vw, 24px);
+    --t-sm: clamp(14px, 1.3vw, 16px);
+    --t-xs: clamp(11px, 1vw, 12px);
+
+    --s-1: 4px;
+    --s-2: 8px;
+    --s-3: 16px;
+    --s-4: 24px;
+    --s-5: 40px;
+    --s-6: 64px;
+    --s-7: 96px;
+
+    --nav-h: 72px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: var(--t-sm);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .mono { font-family: 'Space Mono', monospace; }
+
+  .label {
+    font-family: 'Space Mono', monospace;
+    font-size: var(--t-xs);
+    letter-spacing: 0.02em;
+  }
+
+  .label-lower { text-transform: lowercase; }
+
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: var(--s-4);
+    padding-right: var(--s-4);
+  }
+
+  @media (min-width: 700px) {
+    .wrap { padding-left: var(--s-6); padding-right: var(--s-6); }
+  }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    background: var(--ink);
+    border-bottom: 1px solid #2A2A2A;
+  }
+
+  .nav-inner {
+    max-width: 1240px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-4);
+  }
+
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(16px, 2.4vw, 20px);
+    color: var(--paper);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .nav-logo span { color: var(--acid); }
+
+  .nav-back {
+    font-family: 'Space Mono', monospace;
+    font-size: var(--t-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--paper);
+    border: 1px solid var(--paper);
+    padding: 10px 16px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-back:hover { background: var(--acid); color: var(--ink); border-color: var(--acid); }
+
+  /* ---------- Header ---------- */
+  .legal-hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding-top: var(--s-6);
+    padding-bottom: var(--s-6);
+  }
+
+  .legal-hero .label { color: var(--acid); display: block; margin-bottom: var(--s-3); }
+
+  .legal-hero h1 { font-size: var(--t-xl); color: var(--paper); }
+
+  .legal-updated {
+    margin-top: var(--s-3);
+    color: var(--ash);
+    text-transform: uppercase;
+  }
+
+  /* ---------- Content ---------- */
+  .legal-content {
+    padding-top: var(--s-7);
+    padding-bottom: var(--s-7);
+  }
+
+  .legal-content h2 {
+    font-size: var(--t-lg);
+    margin-top: var(--s-6);
+    margin-bottom: var(--s-3);
+  }
+
+  .legal-content h2:first-child { margin-top: 0; }
+
+  .legal-content p { color: #333; max-width: 68ch; }
+
+  .legal-content p + p { margin-top: var(--s-3); }
+
+  .legal-content ul {
+    margin-top: var(--s-3);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    max-width: 68ch;
+  }
+
+  .legal-content li {
+    padding-left: var(--s-4);
+    position: relative;
+    color: #333;
+  }
+
+  .legal-content li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: var(--acid-deep, var(--hot-deep));
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+  }
+
+  .legal-content a.inline-link {
+    color: var(--hot-deep);
+    border-bottom: 1px solid var(--hot-deep);
+  }
+
+  .legal-content a.inline-link:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* ---------- Footer (shared) ---------- */
+  footer {
+    background: var(--ink);
+    color: var(--ash);
+    padding-top: var(--s-6);
+    padding-bottom: var(--s-5);
+  }
+
+  .footer-grid {
+    max-width: 1240px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-5);
+    padding-bottom: var(--s-5);
+    border-bottom: 1px solid #2A2A2A;
+  }
+
+  @media (min-width: 700px) {
+    .footer-grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--s-4); }
+  }
+
+  .footer-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: clamp(20px, 2.6vw, 24px);
+    color: var(--paper);
+    letter-spacing: -0.01em;
+  }
+
+  .footer-logo span { color: var(--acid); }
+
+  .footer-tagline {
+    margin-top: var(--s-2);
+    max-width: 30ch;
+    color: var(--ash);
+    font-size: var(--t-sm);
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+  }
+
+  .footer-col-label {
+    color: var(--acid);
+    margin-bottom: var(--s-1);
+  }
+
+  .footer-col a {
+    font-family: 'Space Mono', monospace;
+    font-size: var(--t-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--ash);
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover { color: var(--acid); }
+
+  .footer-col a.is-current { color: var(--acid); }
+
+  .footer-bottom {
+    max-width: 1240px;
+    padding-top: var(--s-4);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--s-3);
+    font-family: 'Space Mono', monospace;
+    font-size: var(--t-xs);
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html#top" class="nav-logo">Voices<span>_</span> Shelf</a>
+    <a href="index.html#top" class="nav-back">&larr; Back to site</a>
+  </div>
+</nav>
+
+<header class="legal-hero">
+  <div class="wrap">
+    <span class="label label-lower">// legal</span>
+    <h1>Privacy Policy</h1>
+    <span class="mono label-lower legal-updated">Last updated August 14, 2026</span>
+  </div>
+</header>
+
+<section class="legal-content">
+  <div class="wrap">
+
+    <h2>The short version</h2>
+    <p>Voices from the Shelf collects only what you give us directly — mainly your email address and whatever you tell us in a book submission or newsletter signup. We don't sell your data, and we don't run tracking or advertising scripts on this site.</p>
+
+    <h2>What we collect</h2>
+    <p>We collect information you choose to give us:</p>
+    <ul>
+      <li>Your email address, if you sign up for the newsletter.</li>
+      <li>Your name, email, and details about your book, if you submit it for consideration.</li>
+      <li>Anything you send us directly by email at <a class="inline-link" href="mailto:collabs@voicesfromtheshelf.com">collabs@voicesfromtheshelf.com</a>.</li>
+    </ul>
+    <p>We don't use cookies, analytics, or ad-tracking scripts on this site. Loading the page does pull fonts from Google Fonts, which may see your IP address as part of that request — that's standard for most websites and outside our control.</p>
+
+    <h2>How we use it</h2>
+    <p>We use your information to respond to your submission, schedule interviews, send the newsletter you signed up for, and generally run Voices from the Shelf. We don't use your information for anything beyond that.</p>
+
+    <h2>Third-party services</h2>
+    <p>Newsletter signups and book submissions are handled through JotForm, a third-party form provider. When you submit a form on this site, your information is processed by JotForm on our behalf, subject to their own <a class="inline-link" href="https://www.jotform.com/privacy/" target="_blank" rel="noopener">privacy policy</a>. We don't share your information with any other outside company, and we don't sell it.</p>
+
+    <h2>Your choices</h2>
+    <p>You can unsubscribe from the newsletter at any time using the link in any email we send. You can also email us at <a class="inline-link" href="mailto:collabs@voicesfromtheshelf.com">collabs@voicesfromtheshelf.com</a> to ask what information we have about you or to request that it be deleted.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, we'll update this page and change the "last updated" date above. Continuing to use the site after a change means you accept the update.</p>
+
+    <h2>Questions</h2>
+    <p>Reach out any time at <a class="inline-link" href="mailto:collabs@voicesfromtheshelf.com">collabs@voicesfromtheshelf.com</a>.</p>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <span class="footer-logo">Voices<span>_</span> Shelf</span>
+      <p class="footer-tagline">Where readers and indie authors actually talk.</p>
+    </div>
+    <nav class="footer-col" aria-label="Site">
+      <span class="label label-lower footer-col-label">// explore</span>
+      <a href="index.html#work">Work</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="footer-col">
+      <span class="label label-lower footer-col-label">// elsewhere</span>
+      <a href="https://www.tiktok.com/@jonahfromtheshelf" target="_blank" rel="noopener">TikTok ↗</a>
+    </div>
+    <div class="footer-col">
+      <span class="label label-lower footer-col-label">// legal</span>
+      <a href="privacy.html" class="is-current">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>&copy; 2026 Voices from the Shelf. Built for readers and indie authors.</span>
+  </div>
+</footer>
+
+</body>
+</html>
