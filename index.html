@@ -1399,15 +1399,15 @@
   </div>
 </header>
 
-<section class="newsletter" aria-label="Newsletter signup">
+<section class="newsletter" aria-label="Submit your book">
   <div class="wrap newsletter-inner">
     <div class="newsletter-copy">
-      <span class="label label-lower" style="color:var(--hot-deep);">// join the list</span>
-      <h2>Get the good stuff in your inbox<span style="color:var(--acid);">.</span></h2>
-      <p>New author interviews, buddy read picks, and recommendations you won't find on an algorithm. No spam, unsubscribe anytime.</p>
+      <span class="label label-lower" style="color:var(--hot-deep);">// for authors</span>
+      <h2>Got a book worth the shelf<span style="color:var(--acid);">?</span></h2>
+      <p>Submit your book for a shot at a live, unscripted TikTok interview — no pitch deck, no script, just a real conversation about the story behind the story.</p>
     </div>
-    <button type="button" class="btn btn-solid" id="newsletterBtn" data-jf-src="262239113953053" data-jf-compact="true">
-      Sign up
+    <button type="button" class="btn btn-solid" id="newsletterBandBtn" data-jf-src="262238410158049">
+      Submit your book
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       <svg class="sparkle" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 L13.8 9.2 L21 11 L13.8 12.8 L12 20 L10.2 12.8 L3 11 L10.2 9.2 Z"/></svg>
     </button>
@@ -1825,25 +1825,17 @@
     if (!jfModal) return;
     var trigger = e && e.currentTarget;
     var formId = trigger ? trigger.getAttribute('data-jf-src') : null;
-    var isNewsletter = trigger && trigger.id === 'newsletterBtn';
-    var frameTitle = isNewsletter ? 'Newsletter signup — Voices from the Shelf' : 'Submit your book — Voices from the Shelf';
     if (jfModalFrame && formId) {
       var target = 'https://form.jotform.com/' + formId;
       if (jfModalFrame.getAttribute('data-current') !== formId) {
         jfModalFrame.src = target;
         jfModalFrame.setAttribute('data-current', formId);
-        jfModalFrame.setAttribute('title', frameTitle);
+        jfModalFrame.setAttribute('title', 'Submit your book — Voices from the Shelf');
         armJfLoadWatch();
       }
     } else if (jfModalFrame && !jfModalFrame.src) {
       jfModalFrame.src = jfModalFrame.getAttribute('data-src');
       armJfLoadWatch();
-    }
-    if (jfModalPanel) {
-      jfModalPanel.classList.toggle('is-compact', !!(trigger && trigger.getAttribute('data-jf-compact') === 'true'));
-    }
-    if (jfModal) {
-      jfModal.setAttribute('aria-label', isNewsletter ? 'Newsletter signup' : 'Submit your book');
     }
     jfLastFocused = document.activeElement;
     jfModal.classList.add('is-open');
@@ -1858,7 +1850,7 @@
     if (jfLastFocused && jfLastFocused.focus) jfLastFocused.focus();
   }
 
-  ['bookSlotBtn', 'nudgeSlotBtn', 'howSubmitBtn', 'newsletterBtn'].forEach(function (id) {
+  ['bookSlotBtn', 'nudgeSlotBtn', 'howSubmitBtn', 'newsletterBandBtn'].forEach(function (id) {
     var el = document.getElementById(id);
     if (el) el.addEventListener('click', openJfModal);
   });
