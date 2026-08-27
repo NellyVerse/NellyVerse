@@ -647,7 +647,7 @@
 
   /* ---------- Newsletter band ---------- */
   .newsletter {
-    background: var(--smoke);
+    background: var(--ink);
     padding-top: var(--s-6);
     padding-bottom: var(--s-6);
   }
@@ -664,13 +664,13 @@
 
   .newsletter-copy h2 {
     font-size: var(--t-xl);
-    color: var(--ink);
+    color: var(--paper);
     margin-top: var(--s-2);
   }
 
   .newsletter-copy p {
     margin-top: var(--s-3);
-    color: #4A4A4A;
+    color: var(--paper);
     max-width: 52ch;
   }
 
@@ -752,7 +752,11 @@
 
   .card-body .label { color: var(--hot-deep); }
 
-  .card-body h3 { font-size: var(--t-lg); margin-top: var(--s-1); }
+  .card-body h3 {
+    font-size: clamp(20px, 2.6vw, 36px);
+    margin-top: var(--s-1);
+    overflow-wrap: break-word;
+  }
 
   .card-body p { color: #4A4A4A; margin-top: var(--s-2); }
 
@@ -925,6 +929,76 @@
     font-family: 'DM Sans', sans-serif;
     text-transform: none;
     letter-spacing: normal;
+  }
+
+  /* ---------- Team ---------- */
+  .team {
+    background: var(--smoke);
+    padding-top: var(--s-5);
+    padding-bottom: var(--s-5);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s-3);
+  }
+
+  @media (min-width: 700px) {
+    .team-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .team-card {
+    background: var(--paper);
+  }
+
+  .team-card-jonah { background: var(--acid); }
+  .team-card-bryce { background: var(--hot); }
+
+  .team-card .card-body {
+    padding: var(--s-3);
+    gap: 6px;
+  }
+
+  .team-card h3 { font-size: var(--t-md); margin-top: 2px; }
+
+  .team-card p {
+    color: #4A4A4A;
+    font-size: var(--t-xs);
+  }
+
+  .team-divider {
+    border: none;
+    border-top: 1px solid #DDDDDD;
+    width: 100%;
+    margin-top: auto;
+    padding-top: var(--s-3);
+  }
+
+  .team-card-jonah .team-divider,
+  .team-card-bryce .team-divider {
+    border-top-color: rgba(13, 13, 13, 0.15);
+  }
+
+  .team-card-bryce .card-body .label { color: var(--paper); }
+  .team-card-bryce h3 { color: var(--paper); }
+  .team-card-bryce p { color: rgba(255, 255, 255, 0.85); }
+  .team-card-bryce .team-divider { border-top-color: rgba(255, 255, 255, 0.35); }
+
+  .team-card-bryce .btn.btn-ink {
+    border-color: var(--paper);
+    color: var(--paper);
+  }
+
+  .team-card-bryce .btn.btn-ink:hover {
+    background: var(--paper);
+    color: var(--ink);
+    border-color: var(--paper);
+  }
+
+  .team-card .btn {
+    margin-top: var(--s-3);
+    align-self: flex-start;
   }
 
   /* ---------- FAQ ---------- */
@@ -1399,12 +1473,63 @@
   </div>
 </header>
 
+<section id="team" class="team">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label label-lower sec-label">// who's behind it</span>
+      <h2>The voices</h2>
+    </div>
+    <div class="team-grid">
+
+      <article class="card team-card team-card-jonah reveal">
+        <div class="card-body">
+          <span class="label label-lower">// co-founder</span>
+          <h3>jonahfromtheshelf</h3>
+          <p>Co-founder — one of the faces behind the TikTok Lives.</p>
+          <hr class="team-divider">
+          <a class="btn btn-ink" href="jonah">
+            See my links
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="card team-card reveal">
+        <div class="card-body">
+          <span class="label label-lower">// tiktok live</span>
+          <h3>Sundays, live</h3>
+          <p>Join our TikTok Live this August 31st at 7:00 PM MDT.</p>
+          <hr class="team-divider">
+          <a class="btn btn-ink" href="https://www.tiktok.com/@brycefromtheshelf" target="_blank" rel="noopener">
+            Watch live
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="card team-card team-card-bryce reveal">
+        <div class="card-body">
+          <span class="label label-lower">// co-founder</span>
+          <h3>brycefromtheshelf</h3>
+          <p>Co-founder — behind the scenes finding the next voice worth putting on the shelf.</p>
+          <hr class="team-divider">
+          <a class="btn btn-ink" href="bryce">
+            See my links
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 <section class="newsletter" aria-label="Submit your book">
   <div class="wrap newsletter-inner">
     <div class="newsletter-copy">
-      <span class="label label-lower" style="color:var(--hot-deep);">// for authors</span>
+      <span class="label label-lower" style="color:var(--paper);">// for authors</span>
       <h2>Got a book worth the shelf<span style="color:var(--acid);">?</span></h2>
-      <p>Submit your book for a shot at a live, unscripted TikTok interview — no pitch deck, no script, just a real conversation about the story behind the story.</p>
+      <p>Submit your book to Voices from the Shelf so we can read it, talk about it, and bring you on TikTok Live. Great stories deserve more than quietly collecting dust on a shelf.</p>
     </div>
     <button type="button" class="btn btn-solid" id="newsletterBandBtn" data-jf-src="262238410158049">
       Submit your book
