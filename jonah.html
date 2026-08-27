@@ -208,6 +208,97 @@
   }
 
   footer a.back:hover { color: var(--acid); border-color: var(--acid); }
+
+  /* ---------- JotForm popup modal ---------- */
+  .jf-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: var(--s-4);
+    background: rgba(13, 13, 13, 0.85);
+  }
+
+  .jf-modal.is-open { display: flex; }
+
+  .jf-modal-panel {
+    position: relative;
+    width: min(760px, 100%);
+    height: min(85vh, 820px);
+    background: var(--paper);
+    border: 1px solid var(--ink);
+  }
+
+  .jf-modal-panel iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .jf-modal-fallback {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: var(--paper);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--s-3);
+    padding: var(--s-5);
+  }
+
+  .jf-modal-fallback.is-active { display: flex; }
+
+  .jf-modal-fallback p {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    font-size: 16px;
+    max-width: 32ch;
+  }
+
+  .jf-modal-fallback a {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 12px 20px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+  }
+
+  .jf-modal-close {
+    position: absolute;
+    top: -46px;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--acid);
+    border: 1px solid var(--acid);
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .jf-modal-close:hover {
+    background: var(--ink);
+    color: var(--acid);
+    border-color: var(--paper);
+  }
+
+  .jf-modal-close svg { width: 16px; height: 16px; }
+
+  body.jf-modal-open { overflow: hidden; }
+
+  @media (max-width: 599px) {
+    .jf-modal-panel { height: min(90vh, 820px); }
+    .jf-modal-close { top: -42px; }
+  }
 </style>
 </head>
 <body>
@@ -223,7 +314,7 @@
   <div class="group">
     <span class="group-label">// for authors</span>
     <div class="links">
-      <a class="link-row is-solid" href="https://form.jotform.com/262238410158049" target="_blank" rel="noopener">
+      <a class="link-row is-solid" href="https://form.jotform.com/262238410158049" id="jfTrigger">
         <span class="link-main">
           <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9 22 2Z"/></svg>
           <span class="link-text">
@@ -339,6 +430,92 @@
   </footer>
 
 </div>
+
+<div class="jf-modal" id="jfModal" role="dialog" aria-modal="true" aria-label="Submit your book">
+  <div class="jf-modal-panel">
+    <button type="button" class="jf-modal-close" id="jfModalClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <iframe id="jfModalFrame" title="Submit your book — Voices from the Shelf"></iframe>
+    <div class="jf-modal-fallback" id="jfModalFallback">
+      <p>This form is taking a moment to load. You can open it directly instead:</p>
+      <a href="https://form.jotform.com/262238410158049" target="_blank" rel="noopener">
+        Open form ↗
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  var jfModal = document.getElementById('jfModal');
+  var jfModalFrame = document.getElementById('jfModalFrame');
+  var jfModalClose = document.getElementById('jfModalClose');
+  var jfModalFallback = document.getElementById('jfModalFallback');
+  var jfTrigger = document.getElementById('jfTrigger');
+  var jfLastFocused = null;
+  var jfLoadTimer = null;
+
+  function showJfFallback() {
+    if (jfModalFallback) jfModalFallback.classList.add('is-active');
+  }
+
+  function hideJfFallback() {
+    if (jfModalFallback) jfModalFallback.classList.remove('is-active');
+  }
+
+  function armJfLoadWatch() {
+    if (jfLoadTimer) clearTimeout(jfLoadTimer);
+    hideJfFallback();
+    jfLoadTimer = setTimeout(showJfFallback, 8000);
+  }
+
+  if (jfModalFrame) {
+    jfModalFrame.addEventListener('load', function () {
+      if (jfLoadTimer) clearTimeout(jfLoadTimer);
+      hideJfFallback();
+    });
+    jfModalFrame.addEventListener('error', function () {
+      if (jfLoadTimer) clearTimeout(jfLoadTimer);
+      showJfFallback();
+    });
+  }
+
+  function openJfModal(e) {
+    if (e) e.preventDefault();
+    if (!jfModal) return;
+    if (jfModalFrame && !jfModalFrame.getAttribute('data-loaded')) {
+      jfModalFrame.src = 'https://form.jotform.com/262238410158049';
+      jfModalFrame.setAttribute('data-loaded', '1');
+      armJfLoadWatch();
+    }
+    jfLastFocused = document.activeElement;
+    jfModal.classList.add('is-open');
+    document.body.classList.add('jf-modal-open');
+    if (jfModalClose) jfModalClose.focus();
+  }
+
+  function closeJfModal() {
+    if (!jfModal) return;
+    jfModal.classList.remove('is-open');
+    document.body.classList.remove('jf-modal-open');
+    if (jfLastFocused && jfLastFocused.focus) jfLastFocused.focus();
+  }
+
+  if (jfTrigger) jfTrigger.addEventListener('click', openJfModal);
+  if (jfModalClose) jfModalClose.addEventListener('click', closeJfModal);
+
+  if (jfModal) {
+    jfModal.addEventListener('click', function (e) {
+      if (e.target === jfModal) closeJfModal();
+    });
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && jfModal && jfModal.classList.contains('is-open')) {
+      closeJfModal();
+    }
+  });
+</script>
 
 </body>
 </html>
