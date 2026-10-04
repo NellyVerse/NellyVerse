@@ -746,6 +746,75 @@
 
   .card-3 .card-media svg { color: var(--paper); }
 
+  .card-video { padding: 0 var(--s-3); }
+
+  .card-video-frame {
+    width: 100%;
+    display: grid;
+    place-items: center;
+  }
+
+  .card-video-frame > * { grid-area: 1 / 1; }
+
+  .card-video img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+
+  .card-video svg {
+    width: 18%;
+    height: auto;
+    color: var(--ink);
+    filter: drop-shadow(3px 3px 0 var(--ink));
+    transition: transform 0.2s ease;
+  }
+
+  .card-video:hover svg,
+  .card-video:focus-visible svg { transform: scale(1.1); }
+
+  .card-book img {
+    width: 50%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+    transition: transform 0.25s ease;
+  }
+
+  .card-book:hover img,
+  .card-book:focus-visible img { transform: rotate(-2deg) scale(1.03); }
+
+  .card-book-badge {
+    position: absolute;
+    top: var(--s-3);
+    left: var(--s-3);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: var(--hot);
+    color: var(--paper);
+    border: 1px solid var(--ink);
+    padding: 4px 8px;
+  }
+
+  .card-watch {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-top: var(--s-2);
+  }
+
   .card-body {
     padding: var(--s-4);
     flex: 1;
@@ -1552,13 +1621,17 @@
     <div class="grid">
 
       <article class="card card-1 reveal">
-        <div class="card-media">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 9v6l5-3-5-3Z" fill="currentColor" stroke="none"/></svg>
-        </div>
+        <a class="card-media card-video" href="https://youtu.be/Br1CwXi_0Bk" target="_blank" rel="noopener" aria-label="Watch on YouTube: Author Talk with Rory AB Forrest, Dave the Space Pet">
+          <span class="card-video-frame">
+            <img src="https://i.ytimg.com/vi/Br1CwXi_0Bk/maxresdefault.jpg" alt="Thumbnail for the Dave the Space Pet author talk with Rory AB Forrest" loading="lazy" width="1280" height="720">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="var(--hot)"/><path d="M10 9v6l5-3-5-3Z" fill="var(--paper)" stroke="none"/></svg>
+          </span>
+        </a>
         <div class="card-body">
           <span class="label label-lower">// author interviews [LIVE SHOWS]</span>
           <h3>Real conversations, not book ads</h3>
           <p>Unscripted TikTok Live interviews where indie authors talk about the book behind the book — the process, the doubts, the reason it exists. No pitch decks.</p>
+          <a class="card-watch" href="https://youtu.be/Br1CwXi_0Bk" target="_blank" rel="noopener">Watch the latest: Dave the Space Pet with Rory AB Forrest →</a>
           <div class="card-tag">
             <span class="tag">Live</span>
             <span class="tag">Unscripted</span>
@@ -1567,15 +1640,17 @@
       </article>
 
       <article class="card card-2 reveal">
-        <div class="card-media">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15Z"/><path d="M9 7h6M9 11h4"/></svg>
-        </div>
+        <a class="card-media card-book" href="https://fable.co/club/voices-from-the-shelf-with-brycefromtheshelf-406721176638" target="_blank" rel="noopener" aria-label="Join the October buddy read on Fable: Rise of the Infected, Part 1">
+          <img src="images/october-read-rise-of-the-infected.jpg" alt="Cover of Rise of the Infected, Part 1 by Anyssia Thornberry and Tyler Thornberry" loading="lazy" width="432" height="648">
+          <span class="card-book-badge">October read</span>
+        </a>
         <div class="card-body">
           <span class="label label-lower">// buddy reads [COMMUNITY]</span>
           <h3>Read together, talk after</h3>
-          <p>A shared reading schedule, a running Discord thread, and a live wrap-up discussion. Readers finish books with people, not alone in a group chat that goes quiet.</p>
+          <p>One book, one schedule, one club on Fable. React chapter by chapter, argue in the comments, then talk it all out live when the last page hits. Nobody finishes alone.</p>
+          <a class="card-watch" href="https://fable.co/club/voices-from-the-shelf-with-brycefromtheshelf-406721176638" target="_blank" rel="noopener">Join the October read: Rise of the Infected on Fable →</a>
           <div class="card-tag">
-            <span class="tag">Discord</span>
+            <span class="tag">Fable</span>
             <span class="tag">Group reads</span>
           </div>
         </div>
