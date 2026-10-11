@@ -317,7 +317,7 @@
   <div class="group">
     <span class="group-label">// read</span>
     <div class="links">
-      <a class="link-row" href="https://open.substack.com/pub/brycefromtheshelf" target="_blank" rel="noopener">
+      <a class="link-row" href="https://brycefromtheshelf.substack.com/?utm_source=linkpage&amp;utm_medium=bio" target="_blank" rel="noopener">
         <span class="link-main">
           <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 8.24H1.46V5.41h21.08v2.83zM1.46 10.81V24L12 18.11 22.54 24V10.81H1.46zM22.54 0H1.46v2.84h21.08V0z"/></svg>
           <span class="link-text">
@@ -544,6 +544,16 @@
       closeJfModal();
     }
   });
+</script>
+
+<script>
+  (function () {
+    var src = new URLSearchParams(location.search).get('src') || 'linkpage';
+    document.querySelectorAll('a[href*="substack.com"]').forEach(function (a) {
+      a.href = 'https://brycefromtheshelf.substack.com/?utm_source=' +
+        encodeURIComponent(src) + '&utm_medium=bio';
+    });
+  })();
 </script>
 
 </body>
